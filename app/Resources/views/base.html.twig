@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <title>{% block title %}AE Home{% endblock %}</title>
+        <title>{% block title %}Arabian Events{% endblock %}</title>
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway:800,800i" rel="stylesheet">
 
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
@@ -13,41 +13,52 @@
     <body>
         {% block body %}
 
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="{{ path('home') }}">ARABIAN-EVENTS.COM</a>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-		<li class="nav-item dropdown">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="{{ path('home') }}">ARABIAN EVENTS.COM</a>
+	       {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+	          <a id="user" href="{{path('profile')}}">Bonjour {{app.user.username}}</a>
+	        {% endif %}
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+		    <li class="nav-item dropdown">
 			<a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				Ville
 			</a>
 			<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-				{% for b in bigCity %}
+				{% for b in bigCity.getBigCity %}
 
-				<a class="dropdown-item" href="#">{{ b.name }}</a>
+				<a class="dropdown-item" href="{{path('bigcity', { 'id': b.id })}}">{{ b.name }}</a>
 				{% endfor %}
 
-			</div>
+	</div>
 		</li>
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Qui nous somme <span class="sr-only"></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Prestataire</a>
-      </li>
-      <li class="nav-item">
+        <li class="nav-item active">
+        <a class="nav-link" href="{{path ('QuiNousSommes')}}">Qui nous somme <span class="sr-only"></a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{{path ('prestataire')}}">Prestataire</a>
+        </li>
+        <li class="nav-item">
         <a class="nav-link disabled" href="#">Nous contacter</a>
-      </li>
-	</ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
+        </li>
+        </ul>
+
+        <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+
+        {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+        <li><a href="{{path ('logout')}}">Deconnexion</a></li>
+        {% else %}
+        <li><a href="{{path ('login')}}">connexion</a></li>
+        {% endif %}
   </div>
 </nav>
+
 
 
 

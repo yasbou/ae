@@ -4,6 +4,8 @@ parameters:
     #parameter_name: value
 
 services:
+
+
     # default configuration for services in *this* file
     _defaults:
         # automatically injects dependencies in your services
@@ -33,3 +35,6 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    city:
+        class: 'AppBundle\Service\City'
+        public: true

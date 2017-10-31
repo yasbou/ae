@@ -18,10 +18,10 @@
 
    {% for s in service %}
    <div class="card">
-  <img class="card-img-top" src="{{asset ('images/fond20.jpg') }}" alt="Card image cap">
+  <a href="{{path('service', { 'id': s.id })}}"><img class="card-img-top" src="{{asset ('images/fond20.jpg') }}" alt="Card image cap">
   <div class="card-body">
 	  <h4 class="card-title">{{ s.name }}</h4>
-    <p class="card-text">{{ s.description }}</p>
+    <p class="card-text">{{ s.description }}</p></a>
   </div>
 </div>
 

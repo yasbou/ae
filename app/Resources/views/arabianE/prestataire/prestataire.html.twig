@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+ {{ parent() }}
+ <p id="redir">ACCUEIL>PRÉSTATAIRE INFO & INSCRIPTION</p>
+
+ <div class="container">
+  	<div class="row">
+ 		 <div class="col-6">
+ 			 <div class="QuiNousSommes">
+
+<h1>Le premier portail d'organisation d'évenements 100% orientales</h1>
+  		 	<h2 class="titre">C'est simple</h2>
+
+  			<ol id= 'step'>
+  				<li>Les clients disirent organiser un évenement (mariages, naissances, autres...). Ils visitent ArabianEvents à la recherche des préstataires.</li>
+				<li>Ils découvrent vos services, vos créations ainsi que vos offres. Soit ils vous contacte directement par téléphone, soit il remplissent un formulaire. </li>
+				<li>ArabianEvents vous envoie des demande de devis avec l'ensemble des information nécessaire à l'élaboration du devis, ainsi que les coordonées du client afin que vous puissiez les contacter.</li>
+				<li>Vous contacter vos clients afin de concrétiser les reservations.
+				</li>
+  			</ol>
+
+			<h1>Inscrivez-vous gratuitement</h1>
+			<div class="inscription">
+
+				{{ form_start(form) }}
+        		{{ form_widget(form) }}
+        		<input type="submit" value="Create" />
+    			{{ form_end(form) }}
+
+			</div>
+
+  			<h1 class="titre">Information de contact</h1>
+
+ 		<div class="contact">
+
+ 			<ul>
+     		<li>Email: arabiantevents@gmail.com</li>
+     		<li>Tel.: 00.00.00.00.00</li>
+     		<li>Fax: 00.00.00.00.00</li>
+ 			</ul>
+
+ 		</div>
+
+ 			</div>
+ 		</div>
+ 	</div>
+ </div>
+
+ {% endblock %}

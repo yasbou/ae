@@ -3,6 +3,8 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use AppBundle\Entity\Picture;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Table(name="app_users")
@@ -22,41 +24,11 @@ class User implements UserInterface, \Serializable
      */
     private $username;
 
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="numberStreet", type="integer")
-     */
-    private $numberStreet;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="nameStreet", type="string", length=255)
+     * @ORM\Column(type="string", length=25)
      */
-    private $nameStreet;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="city", type="string", length=255)
-     */
-    private $city;
-
-    /**
-     * @var int
-     *
-     * @ORM\Column(name="codePostale", type="integer")
-     */
-    private $codePostale;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="tel", type="string", length=255)
-     */
-    private $tel;
-
+    private $compagnyName;
 
 
     /**
@@ -70,13 +42,52 @@ class User implements UserInterface, \Serializable
     private $email;
 
     /**
-     * @ORM\Column(name="is_active", type="boolean")
+     * @ORM\Column(type="integer")
      */
-    private $isActive;
+    private $numstrett;
+
+    /**
+     * @ORM\Column(type="string", length=60 )
+     */
+    private $adress;
+
+    /**
+     * @ORM\Column(type="string", length=60 )
+     */
+    private $codepostale;
+
+    /**
+     * @ORM\Column(type="string", length=60 )
+     */
+    private $ville;
+
+    /**
+     * @ORM\Column(type="string", length=10 )
+     */
+    private $telephone;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="BigCity")
+     */
+    private $city;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Service")
+     */
+    private $service;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Picture", mappedBy="user")
+     *
+     */
+    private $pictures;
+
+
 
     public function __construct()
     {
         $this->isActive = true;
+         $this->pictures = new ArrayCollection();
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid('', true));
     }
@@ -100,7 +111,7 @@ class User implements UserInterface, \Serializable
 
     public function getRoles()
     {
-        return array('ROLE_USER');
+        return array('ROLE_PRO');
     }
 
     public function eraseCredentials()
@@ -141,19 +152,7 @@ class User implements UserInterface, \Serializable
         return $this->id;
     }
 
-    /**
-     * Set the value of Id
-     *
-     * @param mixed id
-     *
-     * @return self
-     */
-    public function setId($id)
-    {
-        $this->id = $id;
 
-        return $this;
-    }
 
     /**
      * Set the value of Username
@@ -165,126 +164,6 @@ class User implements UserInterface, \Serializable
     public function setUsername($username)
     {
         $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of Number Street
-     *
-     * @return int
-     */
-    public function getNumberStreet()
-    {
-        return $this->numberStreet;
-    }
-
-    /**
-     * Set the value of Number Street
-     *
-     * @param int numberStreet
-     *
-     * @return self
-     */
-    public function setNumberStreet($numberStreet)
-    {
-        $this->numberStreet = $numberStreet;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of Name Street
-     *
-     * @return string
-     */
-    public function getNameStreet()
-    {
-        return $this->nameStreet;
-    }
-
-    /**
-     * Set the value of Name Street
-     *
-     * @param string nameStreet
-     *
-     * @return self
-     */
-    public function setNameStreet($nameStreet)
-    {
-        $this->nameStreet = $nameStreet;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of City
-     *
-     * @return string
-     */
-    public function getCity()
-    {
-        return $this->city;
-    }
-
-    /**
-     * Set the value of City
-     *
-     * @param string city
-     *
-     * @return self
-     */
-    public function setCity($city)
-    {
-        $this->city = $city;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of Code Postale
-     *
-     * @return int
-     */
-    public function getCodePostale()
-    {
-        return $this->codePostale;
-    }
-
-    /**
-     * Set the value of Code Postale
-     *
-     * @param int codePostale
-     *
-     * @return self
-     */
-    public function setCodePostale($codePostale)
-    {
-        $this->codePostale = $codePostale;
-
-        return $this;
-    }
-
-    /**
-     * Get the value of Tel
-     *
-     * @return string
-     */
-    public function getTel()
-    {
-        return $this->tel;
-    }
-
-    /**
-     * Set the value of Tel
-     *
-     * @param string tel
-     *
-     * @return self
-     */
-    public function setTel($tel)
-    {
-        $this->tel = $tel;
 
         return $this;
     }
@@ -350,5 +229,245 @@ class User implements UserInterface, \Serializable
 
         return $this;
     }
+
+
+
+    /**
+     * Get the value of Numstrett
+     *
+     * @return mixed
+     */
+    public function getNumstrett()
+    {
+        return $this->numstrett;
+    }
+
+    /**
+     * Set the value of Numstrett
+     *
+     * @param mixed numstrett
+     *
+     * @return self
+     */
+    public function setNumstrett($numstrett)
+    {
+        $this->numstrett = $numstrett;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Adress
+     *
+     * @return mixed
+     */
+    public function getAdress()
+    {
+        return $this->adress;
+    }
+
+    /**
+     * Set the value of Adress
+     *
+     * @param mixed adress
+     *
+     * @return self
+     */
+    public function setAdress($adress)
+    {
+        $this->adress = $adress;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Codepostale
+     *
+     * @return mixed
+     */
+    public function getCodepostale()
+    {
+        return $this->codepostale;
+    }
+
+    /**
+     * Set the value of Codepostale
+     *
+     * @param mixed codepostale
+     *
+     * @return self
+     */
+    public function setCodepostale($codepostale)
+    {
+        $this->codepostale = $codepostale;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of Ville
+     *
+     * @return mixed
+     */
+    public function getVille()
+    {
+        return $this->ville;
+    }
+
+    /**
+     * Set the value of Ville
+     *
+     * @param mixed ville
+     *
+     * @return self
+     */
+    public function setVille($ville)
+    {
+        $this->ville = $ville;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Get the value of Telephone
+     *
+     * @return mixed
+     */
+    public function getTelephone()
+    {
+        return $this->telephone;
+    }
+
+    /**
+     * Set the value of Telephone
+     *
+     * @param mixed telephone
+     *
+     * @return self
+     */
+    public function setTelephone($telephone)
+    {
+        $this->telephone = $telephone;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Get the value of Compagny Name
+     *
+     * @return mixed
+     */
+    public function getCompagnyName()
+    {
+        return $this->compagnyName;
+    }
+
+    /**
+     * Set the value of Compagny Name
+     *
+     * @param mixed compagnyName
+     *
+     * @return self
+     */
+    public function setCompagnyName($compagnyName)
+    {
+        $this->compagnyName = $compagnyName;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Get the value of City
+     *
+     * @return mixed
+     */
+    public function getCity()
+    {
+        return $this->city;
+    }
+
+    /**
+     * Set the value of City
+     *
+     * @param mixed city
+     *
+     * @return self
+     */
+    public function setCity($city)
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+
+
+
+
+    /**
+     * Get the value of Service
+     *
+     * @return mixed
+     */
+    public function getService()
+    {
+        return $this->service;
+    }
+
+    /**
+     * Set the value of Service
+     *
+     * @param mixed service
+     *
+     * @return self
+     */
+    public function setService($service)
+    {
+        $this->service = $service;
+
+        return $this;
+    }
+
+
+
+
+    /**
+     * Get the value of Pictures
+     *
+     * @return mixed
+     */
+    public function getPictures()
+    {
+        return $this->pictures;
+    }
+
+    /**
+     * Set the value of Pictures
+     *
+     * @param mixed pictures
+     *
+     * @return self
+     */
+    public function setPictures($pictures)
+    {
+        $this->pictures = $pictures;
+
+        return $this;
+    }
+
+//    public function addUser(Picture $user)
+//    {
+//        $this->pictures[] = $user;
+//            // On associé la catégorie courante au produit passé en paramètre
+//            $user->setCategory($this);
+//            return $this;
+//    }
 
 }

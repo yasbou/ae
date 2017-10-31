@@ -26,12 +26,18 @@ security:
             # activate different ways to authenticate
 
             # https://symfony.com/doc/current/security.html#a-configuring-how-your-users-will-authenticate
-            http_basic: ~
+
 
             # https://symfony.com/doc/current/security/form_login_setup.html
-            #form_login: ~
 
             provider: db_provider
+            form_login:
+                login_path: login
+                check_path: login
+
+            logout:
+                path:  logout
+                target: /
 
     access_control:
-        - { path: ^/prestataire/profile, roles: ROLE_ADMIN }
+        - { path: ^/prestataire/profile, roles: ROLE_PRO }
