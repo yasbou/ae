@@ -16,12 +16,13 @@ class BigcityController extends Controller
      * @Route("/ville/{id}", name="bigcity")
      *
      */
-    public function showAction(Bigcity $city)
+    public function showAction(Bigcity $city, Service $service)
     {
 
         return $this->render('arabianE/prestataire/ville.html.twig', [
             'city' => $city,
+            'service'=>$service
         ]);
-
     }
+
 }

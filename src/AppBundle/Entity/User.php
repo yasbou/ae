@@ -67,12 +67,12 @@ class User implements UserInterface, \Serializable
     private $telephone;
 
     /**
-     * @ORM\ManyToOne(targetEntity="BigCity")
+     * @ORM\ManyToOne(targetEntity="BigCity", inversedBy="users" )
      */
     private $city;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Service")
+     * @ORM\ManyToOne(targetEntity="Service", inversedBy="users")
      */
     private $service;
 

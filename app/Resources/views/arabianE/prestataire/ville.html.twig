@@ -4,5 +4,10 @@
  {{ parent() }}
  <p id="redir">ACCUEIL>{{ city.name }}</p>
 
+{% for p in city.users %}
+
+{{dump(p)}}
+{% endfor %}
+
 
 {% endblock %}

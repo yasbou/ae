@@ -44,6 +44,17 @@ class Service
 
 
     /**
+     * @ORM\OneToMany(targetEntity="User", mappedBy="service")
+     *
+     */
+    private $users;
+
+
+
+
+
+
+    /**
      * Get id
      *
      * @return int
@@ -128,6 +139,32 @@ class Service
     public function __toString()
     {
         return $this->getName();
+    }
+
+
+
+    /**
+     * Get the value of Users
+     *
+     * @return mixed
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * Set the value of Users
+     *
+     * @param mixed users
+     *
+     * @return self
+     */
+    public function setUsers($users)
+    {
+        $this->users = $users;
+
+        return $this;
     }
 
 }

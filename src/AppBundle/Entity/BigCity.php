@@ -28,6 +28,13 @@ class BigCity
      */
     private $name;
 
+    /**
+     * @ORM\OneToMany(targetEntity="User", mappedBy="city")
+     *
+     */
+    private $users;
+
+
 
     /**
      * Get id
@@ -67,4 +74,31 @@ class BigCity
     {
         return $this->getName();
     }
+
+    
+
+    /**
+     * Get the value of Users
+     *
+     * @return mixed
+     */
+    public function getUsers()
+    {
+        return $this->users;
+    }
+
+    /**
+     * Set the value of Users
+     *
+     * @param mixed users
+     *
+     * @return self
+     */
+    public function setUsers($users)
+    {
+        $this->users = $users;
+
+        return $this;
+    }
+
 }

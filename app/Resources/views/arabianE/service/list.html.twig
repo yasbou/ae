@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+ {{ parent() }}
+ <p id="redir">ACCUEIL>{{ service.name }}</p>
+
+
+
+
+ <!--liste des prestataires du service sélectionner!-->
+{% for p in service.users %}
+<div class="card">
+  <div class="card-body">
+<a href="{{path('show', { 'id': p.id })}}">
+    <h4 class="card-title">{{p.compagnyName}}</h4>
+    <p class="card-text">{{p.city.name}}</p>
+    <p class="card-text"><small class="text-muted">nom du responsable: {{p.username}}</small></p>
+</a>
+  </div>
+</div>
+
+
+{% endfor %}
+
+
+{% endblock %}
