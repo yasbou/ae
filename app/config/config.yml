@@ -40,6 +40,8 @@ twig:
     strict_variables: '%kernel.debug%'
     globals:
         bigCity: '@AppBundle\Service\City'
+    form_themes:
+        - 'form/bootstrap_4_layout.html.twig'
 
 # Doctrine Configuration
 doctrine:
@@ -65,8 +67,6 @@ doctrine:
 
 # Swiftmailer Configuration
 swiftmailer:
-    transport: '%mailer_transport%'
-    host: '%mailer_host%'
+    transport: sendmail
     username: '%mailer_user%'
     password: '%mailer_password%'
-    spool: { type: memory }

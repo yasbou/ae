@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+{% include 'nav.html.twig' %}
+<div class="form_edit">
+    <h1>modifier mon profil</h1>
+
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+        <input id="btn" type="submit" value="modifier" />
+    {{ form_end(edit_form) }}
+
+</div>
+
+
+{% endblock %}

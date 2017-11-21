@@ -3,33 +3,22 @@
 {% block body %}
  {{ parent() }}
 
- <img id="imghome" src=" {{ asset('images/fond2.jpg') }}" alt="mariage">
-
-<h1>Tout pour vous faciliter l'organisation de vos évenements</h1>
-
+<img id="header"src="{{ asset('images/header.jpg')}}" alt="">
 
 
 <div class="container-fluid">
 
-<div class="service">
-
-	<h1>Liste des préstataires</h1>
-	<img id= "rubis" src=" {{ asset('images/rubis.png') }}" alt="mariage">
-
    {% for s in service %}
-   <div class="card">
-  <a href="{{path('service', { 'id': s.id })}}"><img class="card-img-top" src="{{asset ('images/fond20.jpg') }}" alt="Card image cap">
-  <div class="card-body">
-	  <h4 class="card-title">{{ s.name }}</h4>
-    <p class="card-text">{{ s.description }}</p></a>
+
+   <div class="service">
+
+
+  <a href="{{path('service', { 'id': s.id })}}"><img class="card-img-top" src="{{asset ('images/'~ s.picture) }}" alt="mariage"/><h4 class="card-title">{{ s.name }}</h4></a>
+
+
   </div>
-</div>
 
 {% endfor %}
-
 </div>
-</div>
-
-
-
+{% include 'footer.html.twig'%}
 {% endblock %}

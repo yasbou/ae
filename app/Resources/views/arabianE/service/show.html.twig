@@ -1,7 +1,40 @@
 {% extends 'base.html.twig' %}
 {% block body %}
  {{ parent() }}
-test
 
-{{dump(user)}}
+
+
+<div class="show_item">
+	<h2 id="user_devis">{{user.compagnyname}}</h2>
+	<img id="userLogo" src="{{asset('uploads/'~ user.logo)}}" alt="">
+
+	<div id="coordonée">
+
+	<p>{{user.numstrett}} {{user.adress}} {{user.codepostale}} {{user.ville}}</p>
+	<i class="material-icons">phone_iphone</i>{{user.telephone}} <br>
+	<i class="material-icons">mail</i> {{user.email}}
+</div>
+
+	<div id="slider">
+				<div id="slider-images">
+
+	{% for pictures in user.pictures %}
+	    <img src="{{asset('uploads/'~ pictures.name)}}" alt="mariage"/>
+	{% endfor %}
+	</div>
+			</div>
+
+<div class="form_devis">
+
+
+<h4>Demander un devis</h4>
+{{ form_start(form) }}
+{{ form_row(form) }}
+<input type="submit" value="envoyer" />
+{{ form_end(form) }}
+
+</div>
+
+</div>
+
 {% endblock %}

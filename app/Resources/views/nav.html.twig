@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+ {{ parent() }}
+<h1>Bienvenue sur votre profile</h1>
+
+<div class="container-fluid">
+
+
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <a class="nav-link {% if app.request.attributes.get('_route')== 'profile'%} active
+{% endif %}" href="{{path('profile')}}"><i class="material-icons">perm_identity</i>{{app.user.username}}</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {% if app.request.attributes.get('_route')=='devis_show' %} active
+{% endif %}" href="{{path('devis_show')}}">Mes devis</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {% if app.request.attributes.get('_route')=='edit' %} active
+{% endif %}" href="{{path('edit', { 'id': app.user.id })}}">Modifier mon profil</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link {% if app.request.attributes.get('_route')=="managePicture" %} active
+{% endif %}" href="{{path('managePicture')}}">Gérer mes photos</a>
+  </li>
+
+
+  			<li class="dropdown-item">
+  				{{app.user.compagnyName}}
+  			</li>
+  			<li class="dropdown-item">
+  				{{app.user.numstrett}} {{app.user.adress}}
+  			</li>
+  			<li class="dropdown-item">
+  				{{app.user.codepostale}} {{app.user.ville}}</p>
+  			</li>
+  			<li class="dropdown-item">
+  			<i class="material-icons">phone_iphone</i>{{app.user.telephone}}
+  			</li>
+  			<li class="dropdown-item">
+  			<i class="material-icons">mail</i> {{app.user.email}}
+  			</li>
+  			<li class="dropdown-item">
+  				secteur: {{app.user.city}}
+  			</li>
+  			<li class="dropdown-item">
+  				Service: {{app.user.service}}
+  			</li class="dropdown-item">
+
+
+
+
+</ul>
+</div>
+{% endblock %}

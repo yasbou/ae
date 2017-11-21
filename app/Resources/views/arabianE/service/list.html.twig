@@ -7,20 +7,26 @@
 
 
 
+ <div class="list">
  <!--liste des prestataires du service sélectionner!-->
 {% for p in service.users %}
-<div class="card">
-  <div class="card-body">
-<a href="{{path('show', { 'id': p.id })}}">
-    <h4 class="card-title">{{p.compagnyName}}</h4>
-    <p class="card-text">{{p.city.name}}</p>
-    <p class="card-text"><small class="text-muted">nom du responsable: {{p.username}}</small></p>
-</a>
-  </div>
-</div>
 
+<div class="jumbotron">
+
+  <h2 class="display-3">{{p.compagnyName}}</h2>
+  <img src="{{asset('uploads/'~ p.logo)}}" alt="">
+  <h3 class="lead">nom du responsable: {{p.username}}</h3>
+  <h3 class="lead">tel: {{p.telephone}}</h3>
+  <hr class="my-4">
+  <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{{path('show', { 'id': p.id })}}" role="button">En savoir +</a>
+  </p>
+
+</div>
 
 {% endfor %}
 
+</div>
 
 {% endblock %}

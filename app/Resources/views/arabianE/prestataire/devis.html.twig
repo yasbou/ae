@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+{% include 'nav.html.twig' %}
+
+<div class="devis">
+
+<ul>
+{% for devis in app.user.devis %}
+<div class="carte text-white bg-dark mb-3" style="max-width: 20rem;">
+  <div class="card-header"> devis n°{{devis.id}}
+  <div class="card-body">
+    <h4>Nom: {{devis.firstName}}</h4>
+    <h4>Prénom: {{devis.lastName}}</h4>
+	<h6>n°tel:{{devis.guestTel}} </h4>
+	<button type="button" class="btn btn-secondary">Voir</button>
+  </div>
+</div>
+</div>
+
+{% endfor %}
+
+{% endblock %}

@@ -4,10 +4,27 @@
  {{ parent() }}
  <p id="redir">ACCUEIL>{{ city.name }}</p>
 
-{% for p in city.users %}
+<div class="list">
+<!--liste des prestataires du service sélectionner!-->
+{% for c in city.users %}
 
-{{dump(p)}}
+<div class="jumbotron">
+<h4 id="user_service">{{c.service}}</h4>
+ <h2 class="display-3">{{c.compagnyName}}</h2>
+ <img src="{{asset('uploads/'~ c.logo)}}" alt="">
+ <h3 class="lead">nom du responsable: {{c.username}}</h3>
+ <h3 class="lead">tel: {{c.telephone}}</h3>
+ <hr class="my-4">
+ <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+ <p class="lead">
+   <a class="btn btn-primary btn-lg" href="{{path('show', { 'id': c.id })}}" role="button">En savoir +</a>
+ </p>
+
+</div>
+
 {% endfor %}
+
+</div>
 
 
 {% endblock %}

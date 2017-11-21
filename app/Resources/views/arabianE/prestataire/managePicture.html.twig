@@ -1,0 +1,28 @@
+{% block body %}
+
+
+{% include 'nav.html.twig' %}
+
+
+<div class="managePicture">
+
+<p id="addpicture">Je veux ajouter des photos dans mon album.</p>
+
+{{ form_start(formPicture) }}
+{{ form_row(formPicture) }}
+<input type="submit" value="Ajouter" />
+{{ form_end(formPicture) }}
+
+
+
+
+{% for p in app.user.pictures %}
+<img src="{{asset('uploads/'~ p.name)}}" alt="mariage"/>
+<a href="{{path('deletePicture', { 'id': p.id })}}"><i class="material-icons">delete</i></a>
+{% endfor %}
+
+</div>
+
+
+
+	{% endblock %}

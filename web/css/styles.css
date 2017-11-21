@@ -1,15 +1,14 @@
-#imghome
-{
-display:block;
-width:100%;
-height:100px;
-margin-left:auto;
-margin-right:auto;
-zoom: 7;
-opacity: 0.4;
-position:absolute;
+/*home*/
+
+#header{
+	width: 100%;
+	height: 500px;
+	opacity: 0.5;
 }
 
+#titre{
+	font-size: 100px
+}
 
 h1{
 font-family: 'raleway', sans-serif;
@@ -23,32 +22,68 @@ margin-top: 100px;
 color:pink;
 border-color: pink
 }
+.container-fluid{
+	width: 1500px;
+	margin-top: 100px;
+}
 
 
 .service{
-
-	margin-top: 600px;
-	margin-left:100px
+	display: none;
+	float: left;
+    margin: auto;
+	margin-top: 00px;
+	margin-left:20px
 }
 
-#rubis{
-    display:block;
-    margin-left:auto;
-margin-right:auto;
-margin-top: 60px;
-margin-bottom: 50px
+
+.card-img-top{
+
+	width: 340px;
+	height: 200px;
+	margin-top: 20px;
 
 }
 
-.card{
-    display: inline-block;
-    width: 360px;
-    margin-right: 10px;
-     margin-left: 10px;
-    margin-bottom: 20px;
-	 margin-top: 20px;
-	 padding: 5px;
-	 border: 5px solid pink
+
+.service{
+	opacity:0.7
+}
+
+.service:hover{
+	opacity:1;
+
+}
+
+
+.card-title:hover{
+	opacity:1;
+	background: url('../images/rose.jpg');
+	border:1px solid gold;
+	opacity:0.5;
+
+
+}
+
+.card-title{
+
+
+	margin-top:-168px;
+	margin-left: 40px;
+	color: black;
+	font-size: 30px;
+	position: absolute;
+	border: 2px solid black;
+	height: 150px;
+	width: 250px;
+	text-align: center;
+	padding-top: 50px;
+	font-weight: bolder;
+
+
+
+
+
 }
 
 .card:hover{
@@ -137,7 +172,8 @@ margin-top: 100px;
 
 .inscription{
 	text-align: center;
-	margin-top: 50px;
+	margin: 50px auto;
+	width: 500px;
 }
 
 .infopresta{
@@ -153,4 +189,238 @@ margin-top: 100px;
 
 	font-size: 30px;
 	margin-top: 100px;
+}
+
+footer{
+	display:inline-block;
+	background: lightgray;
+	width: 100%;
+	margin-top: 100px;
+	text-align: center;
+	color:white;
+	font-family: 'raleway', sans-serif;
+	padding-top: 50px;
+	padding-bottom: 30px;
+}
+
+footer h2{
+
+	margin-bottom: 50px;
+}
+
+#footerlink{
+	border: 4px solid pink;
+	color: pink;
+	padding: 20px;
+	background-color: white;
+	font-size: 17px;
+	border-radius: 10px;
+	text-decoration: none;
+}
+
+footer h3{
+	margin-top: 50px;
+	color: lightblue
+}
+
+footer hr{
+	text-align: center;
+	width: 700px;
+
+}
+
+
+.nav-link{
+	font-size: 15px
+}
+
+
+#slider {
+  width: 800px;
+  margin: 20px auto;
+  position: relative;
+}
+
+#slider-images img {
+  display: none;
+  width: 100%;
+  position: absolute;
+}
+
+#slider-images .active {
+  display: block;
+}
+
+#slider-thumbs {
+  position: absolute;
+  top: 20px;
+  width: 100%;
+  text-align: center;
+}
+#slider-thumbs img {
+  display: inline-block;
+  margin: 0 .5em;
+  border: 1px solid #ccc;
+  width: 120px;
+  height: 77px;
+	cursor: pointer;
+}
+#slider-thumbs img:hover {
+	border-color: #999;
+}
+#slider-thumbs img.active {
+	border-color: #a931b3;
+}
+
+.slider-arrow {
+	position: absolute;
+	top: 200px;
+	width: 70px;
+	height: 70px;
+	padding: 20px;
+	cursor: pointer;
+}
+.slider-arrow::before {
+	content: "";
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-top: 3px solid #999;
+	border-left: 3px solid #999;
+}
+.slider-arrow:hover::before {
+	border-color: #a931b3;
+}
+
+#slider-arrow-left {
+	left: 2em;
+}
+#slider-arrow-left::before {
+	transform: rotate(-45deg);
+}
+#slider-arrow-right {
+	right: 2em;
+}
+#slider-arrow-right::before {
+	transform: rotate(135deg);
+}
+
+
+.managePicture{
+	width: 900px;
+	margin: 50px auto;
+}
+
+.managePicture img{
+	width: 200px;
+	height: 150px;
+}
+
+
+.carte{
+	display: inline-block;
+	width: 300px;
+}
+
+.devis{
+	width: 1500px;
+	margin:50px auto;
+}
+
+form{
+
+	margin: auto;
+
+}
+
+form input{
+	display: inline;
+	margin-left: 10px;
+	width: 200px;
+	font-size: 20px;
+}
+
+.show_item{
+	width: 1500px;
+	margin: 100px auto;
+	background: lightgray;
+	padding-bottom: 200px;
+	padding-left: 30px
+}
+
+
+.show_item h2{
+	text-align: center;
+}
+
+#userLogo{
+	width: 150px;
+	height: 130px;
+	display: block;
+	margin: 20px auto 20px;
+	border-radius:100%;
+
+
+
+}
+
+#coordonée{
+	float: right;
+	margin-right: 30px
+}
+
+.list{
+	width: 900px;
+	margin: 100px auto;
+}
+
+.form_edit{
+	width: 1500px;
+	text-align:center;
+	margin:auto;
+
+}
+
+.form_edit input{
+	width: 900px;
+	margin: auto;
+}
+
+.form_edit select{
+	width: 200px;
+	margin:auto;
+
+}
+
+.form_edit button{
+	width: 200px;
+	margin:auto;
+}
+
+
+#btn{
+	width: 200px;
+	margin:auto;
+}
+
+.form_devis{
+	width: 300px;
+	text-align: center;
+}
+
+#user_devis{
+	width: 500px;
+	background: pink;
+	font-family: 'raleway', sans-serif;
+	font-style:italic;
+	text-transform: capitalize
+}
+
+#user_service{
+	float: right;
+	margin-top: -0px;
+	background: pink;
+	padding-left: 100px;
+	padding-right: 100px
+
 }

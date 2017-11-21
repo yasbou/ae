@@ -1,48 +1,16 @@
 {% extends 'base.html.twig' %}
-
 {% block body %}
- {{ parent() }}
+
 <p id="redir">ACCUEIL>MON PROFILE</p>
 
+{% include 'nav.html.twig' %}
+<div id="slider">
+			<div id="slider-images">
 
-<h1>Bienvenue sur votre profile</h1>
-
-<div class="infopresta">
-
-
-	<p>Nom du responsable: {{app.user.username}}</p>
-	<p>Nom de votre entreprise: {{app.user.compagnyName}}</p>
-	<p>Adresse:
-		{{app.user.numstrett}} {{app.user.adress}}
-		{{app.user.codepostale}} {{app.user.ville}}</p>
-	<p> Tel:{{app.user.telephone}}</p>
-	<p>Secteur: {{app.user.city}}</p>
-	<p>Service: {{app.user.service}}</p>
-    <p>mon album photos</p>
-
-{% for p in app.user.pictures %}
-
-<img src="{{asset('uploads/'~ p.name)}}" alt="mariage">
+{% for pictures in app.user.pictures %}
+    <img src="{{asset('uploads/'~ pictures.name)}}" alt="mariage"/>
 {% endfor %}
-
-
-
-
-
-
-
-
-	<p id="addpicture">Je veux ajouter des photos dans mon album.</p>
-
-	{{ form_start(formPicture) }}
-	{{ form_row(formPicture) }}
-	<input type="submit" value="Create" />
-	{{ form_end(formPicture) }}
-
 </div>
-
-<a href="#">MODIFIER MON PROFILE</a>
-
-
+		</div>
 
 {% endblock %}

@@ -5,7 +5,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
 use AppBundle\Entity\Picture;
 use Doctrine\Common\Collections\ArrayCollection;
-
+use Symfony\Component\Validator\Constraints as Assert;
 /**
  * @ORM\Table(name="app_users")
  * @ORM\Entity
@@ -23,6 +23,14 @@ class User implements UserInterface, \Serializable
      * @ORM\Column(type="string", length=25, unique=true)
      */
     private $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="logo", type="string", length=255)
+     * @Assert\File(mimeTypes={"image/gif", "image/jpeg", "image/png"})
+     */
+    private $logo;
 
 
     /**
@@ -82,12 +90,23 @@ class User implements UserInterface, \Serializable
      */
     private $pictures;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Devis", mappedBy="user")
+     *
+     */
+    private $devis;
+
+
+
+
+
 
 
     public function __construct()
     {
         $this->isActive = true;
          $this->pictures = new ArrayCollection();
+         $this->devis = new ArrayCollection();
         // may not be needed, see section on salt below
         // $this->salt = md5(uniqid('', true));
     }
@@ -469,5 +488,57 @@ class User implements UserInterface, \Serializable
 //            $user->setCategory($this);
 //            return $this;
 //    }
+
+
+
+    /**
+     * Get the value of Devis
+     *
+     * @return mixed
+     */
+    public function getDevis()
+    {
+        return $this->devis;
+    }
+
+    /**
+     * Set the value of Devis
+     *
+     * @param mixed devis
+     *
+     * @return self
+     */
+    public function setDevis($devis)
+    {
+        $this->devis = $devis;
+
+        return $this;
+    }
+
+
+
+    /**
+     * Get the value of Logo
+     *
+     * @return string
+     */
+    public function getLogo()
+    {
+        return $this->logo;
+    }
+
+    /**
+     * Set the value of Logo
+     *
+     * @param string logo
+     *
+     * @return self
+     */
+    public function setLogo($logo)
+    {
+        $this->logo = $logo;
+
+        return $this;
+    }
 
 }
