@@ -10,6 +10,7 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Table(name="app_users")
  * @ORM\Entity
  */
+ 
 class User implements UserInterface, \Serializable
 {
     /**

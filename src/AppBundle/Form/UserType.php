@@ -15,14 +15,18 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        ->add('username')
-        ->add('logo', FileType::class)
-        ->add('compagnyName');
+        ->add('username', null, array('label' => false, 'attr' => array(
+        'placeholder' => 'Nom')))
+        ->add('compagnyName', null, array('label' => false, 'attr' => array(
+        'placeholder' => 'Raison Social')))
+        ->add('email', null,array('label' => false, 'attr' => array(
+        'placeholder' => 'Adresse E-mail'))) ;
 
 
         if($options['edit']==false)
         {
-        $builder->add('password');
+        $builder->add('password', null, array('label' => false, 'attr' => array(
+        'placeholder' => 'mot de passe')));
         }
         else{
             $builder->add('password', null, [
@@ -34,14 +38,20 @@ class UserType extends AbstractType
 
 
 
-        $builder->add('email')
-        ->add('numstrett')
-        ->add('adress')
-        ->add('codepostale')
-        ->add('ville')
-        ->add('telephone')
-        ->add('city')
-        ->add('service');
+        $builder
+        ->add('numstrett', null, array('label' => false, 'attr' => array(
+        'placeholder' => 'N° de rue')))
+        ->add('adress', null, array('label' => false, 'attr' => array(
+        'placeholder' => 'Nom de rue')))
+        ->add('codepostale', null, array('label' => false, 'attr' => array(
+        'placeholder' => 'code postale')))
+        ->add('ville', null, array('label' => false, 'attr' => array(
+        'placeholder' => 'Ville')))
+        ->add('telephone',null, array('label' => false, 'attr' => array(
+        'placeholder' => 'Numéro de tel.')))
+        ->add('city', null, array('label' => "Sélectionnez Ville la plus proche"))
+        ->add('service', null, array('label' => "Sélectionnez votre secteur d'activité" ))
+        ->add('logo', FileType::class);
 
     }
 
